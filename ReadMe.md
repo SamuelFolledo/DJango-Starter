@@ -50,6 +50,7 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 - The __include()__ function allows referencing other URLconfs. Whenever Django encounters include(), it chops off whatever part of the URL mattched up to that point and sends the remaining string to the included URLconf for further processing. include() make it easy to plug-and-play URLs. Since polls are in their own URLconf (polls/urls.py), they can be palced under _"/polls/"_, or under _"/fun_polls"_, or under "/content/polls/", or any other path root, and the app will still work
     - __When to use include()__ - You should always use include() when you include other URL patterns. admin.site.urls is the only exception to this.
 - To verify that an index view has been wire into the URLconf, run the following command:
+
     ``` $ python manage.py runserver ```
 
 ===
