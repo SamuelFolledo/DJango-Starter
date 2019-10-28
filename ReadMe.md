@@ -1,7 +1,7 @@
 # Welcome to Django's Starter Project
 This is a project from [Django's Documentation Tutorial](https://docs.djangoproject.com/en/2.2/intro/tutorial01/) to get our feet wet in Django framework.
 
-## Page 1
+## Page 1 Creating A Project -> Creating An App
 - To create a project, type in terminal
     ```$ django-admin startproject mysite //where mysite is the name of the project's directory``` 
 - These files are:
@@ -52,8 +52,15 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 - To verify that an index view has been wire into the URLconf, run the following command:
 
     ``` $ python manage.py runserver ```
+- The __path()__ function is passed four arguments, two reuired: __route__ and __view__, and two optionals: __kwargs__, and __name__
+    __REQUIRED__
+    - __route__ - is a string that contains a URL pattern. When processing a request, Django starts at the first pattern in __urlpatterns__ and makes its way down the list, comparing the requested URL against each pattern until it finds one that matches.
+        - Patterns don’t search GET and POST parameters, or the domain name. For example, in a request to https://www.example.com/myapp/, the URLconf will look for myapp/. In a request to https://www.example.com/myapp/?page=3, the URLconf will also look for myapp/
+    - __view__ - When Django finds a matching pattern, it calls the specified view function with an __HttpRequest__ object as the first argument and any “captured” values from the route as keyword arguments
+    __OPTIONAL__
+    - __kwargs__ - _arbitrary keyword arguments_ can be passed in a dictionary to the target view
+    - __name__ - _naming your URL lets you refer to it unambiguously from elsewhere_ in Django, especially from within templates. This powerful feature allows you to make global changes to the URL patterns of your project while only touching a single file.
 
-===
 
 ## Page 2
 
