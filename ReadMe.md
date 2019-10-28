@@ -1,7 +1,7 @@
 # Welcome to Django's Starter Project
 This is a project from [Django's Documentation Tutorial](https://docs.djangoproject.com/en/2.2/intro/tutorial01/) to get our feet wet in Django framework.
 
-## Page 1 Creating A Project -> Creating An App
+## [Page 1](https://docs.djangoproject.com/en/2.2/intro/tutorial01/) Creating A Project -> Creating An App
 - To create a project, type in terminal
     ```$ django-admin startproject mysite //where mysite is the name of the project's directory``` 
 - These files are:
@@ -62,5 +62,18 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     - __name__ - _naming your URL lets you refer to it unambiguously from elsewhere_ in Django, especially from within templates. This powerful feature allows you to make global changes to the URL patterns of your project while only touching a single file.
 
 
-## Page 2
+## [Page 2](https://docs.djangoproject.com/en/2.2/intro/tutorial02/) Database Setup -> Creating Models
+- __mysite/settings.py__ is a normal Python module with module-level variables representing Django settings, which on default uses SQLite
+    - set __TIME_ZONE__ to your time zone
+- __INSTALLED_APPS__ holds the names of all Django applications that are activated in this Django instance. Apps can be used in multiple projects, and can be packaged and distributed for use by others in their projects
+    - By default, INSTALLED_APPS contains the following apps, all of which come with Django:
+        - __django.contrib.admin__ – The admin site. You’ll use it shortly.
+        - __django.contrib.auth__ – An authentication system.
+        - __django.contrib.contenttypes__ – A framework for content types.
+        - __django.contrib.sessions__ – A session framework.
+        - __django.contrib.messages__ – A messaging framework.
+        - __django.contrib.staticfiles__ – A framework for managing static files.
+- ```$ python manage.py migrate``` - command to create the tables in the database in order to use them
+    - __migrate__ commands looks at the __INSTALLED_APPS__ setting and creates any necessary database tables according to the database settings in your __mysite/settings.py__ file and teh database migrations shipped with the app
+    - __migrate__ command will only run migrations for apps in __INSTALLED_APPS__
 
