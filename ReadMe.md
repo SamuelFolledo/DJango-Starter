@@ -2,7 +2,7 @@
 This is a project from [Django's Documentation Tutorial](https://docs.djangoproject.com/en/2.2/intro/tutorial01/) to get our feet wet in Django framework.
 
 ## [Page 1](https://docs.djangoproject.com/en/2.2/intro/tutorial01/) Creating A Project -> Creating An App
-- To create a project, type in terminal
+### Creating A Project
     ```$ django-admin startproject mysite //where mysite is the name of the project's directory``` 
 - These files are:
 	•	The outer __mysite/__ root directory is just a container for your project. Its name doesn’t matter to Django; you can rename it to anything you like.
@@ -15,7 +15,7 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 
 - To run and test if our Django project works, go to outer __mysite__ directory and run in terminal:
     ```$ python manage.py runserver```
-
+### Creating An App
 - To __create your app__, type this in the same directory as __manage.py__ and run in terminal:
     ```$ python manage.py startapp polls //polls directory and its files will be created```
 - To __write a review__:
@@ -52,6 +52,7 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 - To verify that an index view has been wire into the URLconf, run the following command:
 
     ``` $ python manage.py runserver ```
+### path()
 - The __path()__ function is passed four arguments, two reuired: __route__ and __view__, and two optionals: __kwargs__, and __name__
     __REQUIRED__
     - __route__ - is a string that contains a URL pattern. When processing a request, Django starts at the first pattern in __urlpatterns__ and makes its way down the list, comparing the requested URL against each pattern until it finds one that matches.
@@ -61,8 +62,10 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     - __kwargs__ - _arbitrary keyword arguments_ can be passed in a dictionary to the target view
     - __name__ - _naming your URL lets you refer to it unambiguously from elsewhere_ in Django, especially from within templates. This powerful feature allows you to make global changes to the URL patterns of your project while only touching a single file.
 
+========
 
 ## [Page 2](https://docs.djangoproject.com/en/2.2/intro/tutorial02/) Database Setup -> Creating Models
+### Database Setup
 - __mysite/settings.py__ is a normal Python module with module-level variables representing Django settings, which on default uses SQLite
     - set __TIME_ZONE__ to your time zone
 - __INSTALLED_APPS__ holds the names of all Django applications that are activated in this Django instance. Apps can be used in multiple projects, and can be packaged and distributed for use by others in their projects
@@ -76,4 +79,9 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 - ```$ python manage.py migrate``` - command to create the tables in the database in order to use them
     - __migrate__ commands looks at the __INSTALLED_APPS__ setting and creates any necessary database tables according to the database settings in your __mysite/settings.py__ file and teh database migrations shipped with the app
     - __migrate__ command will only run migrations for apps in __INSTALLED_APPS__
+### Creating Models
+- __Migrations__ are Django's way of communicating changes you make to your models (adding a field, deleting a model, etc.) into your database schema
+- A __model__ is the single, definitive source of truth about your data which contains __fields__ and __behaviors__ of the data you're storing. Django follows DRY principle and has the goal to define your data model in one place and automatically derive things from it.
+    - checkout /polls/models.py to see an example of model
+    - ForeinKey tells Django that each Choice is related to a single Question
 
