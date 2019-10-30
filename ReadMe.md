@@ -126,3 +126,5 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     def __str__(self):
         return self.question_text
     ```
+
+### Introducing the Django Admin
