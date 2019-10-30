@@ -118,5 +118,11 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
         $ python3 manage.py migrate
         ```
         - there are separate commands to make and apply migrations because you'll __commit migrations to your version control system and ship them with your app; making development easier and usable by other developers and in production__
-        
+
 ### Playing with the API
+- ```python3 manage.py shell``` - runs the Python shell interactive
+- Add ```__str__()``` method that provides convenience when dealing with interactive prompt, but also for object's representation which is used throughout Django's automatically-generated admin
+    ```
+    def __str__(self):
+        return self.question_text
+    ```
