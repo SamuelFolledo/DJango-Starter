@@ -62,7 +62,7 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     - __kwargs__ - _arbitrary keyword arguments_ can be passed in a dictionary to the target view
     - __name__ - _naming your URL lets you refer to it unambiguously from elsewhere_ in Django, especially from within templates. This powerful feature allows you to make global changes to the URL patterns of your project while only touching a single file.
 
-========
+
 
 ## [Page 2](https://docs.djangoproject.com/en/2.2/intro/tutorial02/) Database Setup -> Creating Models
 ### Database Setup
@@ -84,4 +84,39 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 - A __model__ is the single, definitive source of truth about your data which contains __fields__ and __behaviors__ of the data you're storing. Django follows DRY principle and has the goal to define your data model in one place and automatically derive things from it.
     - checkout /polls/models.py to see an example of model
     - ForeinKey tells Django that each Choice is related to a single Question
+- The code below allow us to do the following
+    ```
+    #polls/models.py¶
+    from django.db import models
 
+    class Question(models.Model):
+        question_text = models.CharField(max_length=200)
+        pub_date = models.DateTimeField('date published')
+
+    class Choice(models.Model):
+        question = models.ForeignKey(Question, on_delete=models.CASCADE)
+        choice_text = models.CharField(max_length=200)
+        votes = models.IntegerField(default=0)
+    ```
+    1. Create a database schema (CREATE TABLE statements) for this app.
+    2. Create a Python database-access API for __accessing Question__ and __Choice__ objects.
+
+### Activating Models
+- After creating the model, we need to tell our project that __polls app__ is installed by __adding a reference to its configuration class__ in the INSTALLED_APPS setting in __mysite/settings.py__ file. The dotted path yhat you will add inside the INSTALLED_APPS array of apps is ```'polls.apps.PollsConfig'```
+- Now that Django knows to include the __polls__ app, we can now run the following command:
+    ``` $ python3 manage.py makemigrations polls```
+    - __makemigrations__ tells Django that you've made some changes to your models and that you'd like the changes to be stored as a _migration_
+    - __migrations__ are how Django stores changes to your models (database scehma)
+- ```$ python3 manage.py sqlmigrate polls 0001``` - command that will run the migrations and manage your database schema automatically - that's called migrate
+- ```$ python3 manage.py check``` - checks for any problems in your project without making migrations or touching the database
+- ```$ python3 manage.py migrate``` - creates those tables in your database
+    - __migrate__ command takes all the migrations that haven't been applied and runs them against your database _live, without losing data_, and essentially synchonizing the changes you made to your models with the schema in the database
+    - migrations are very powerful and let you change/update your models over time without losing any of your data
+    - __IMPORTANT__ to also run the following commands in __models.py__:
+        ```
+        $ python3 manage.py makemigrations
+        $ python3 manage.py migrate
+        ```
+        - there are separate commands to make and apply migrations because you'll __commit migrations to your version control system and ship them with your app; making development easier and usable by other developers and in production__
+        
+### Playing with the API
