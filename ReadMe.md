@@ -125,6 +125,21 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     ```
     def __str__(self):
         return self.question_text
-    ```
+    ```` 
 
 ### Introducing the Django Admin
+- Django automates creation of admin interfaces for models; with a very clear separation between “content publishers” and the “public” site
+1. Create an admin who can login to the admin site by running this command: 
+    ```
+    $ python manage.py createsuperuser
+    ```
+2. Enter desired username
+3. Enter desired email
+4. Enter password twice
+
+### Start Development Server
+- The Django admin site is activated by default, but if the server is not running start it like so:
+    ```
+    $ python manage.py runserver
+    ```
+
