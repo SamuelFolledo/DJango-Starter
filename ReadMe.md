@@ -143,3 +143,11 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     $ python manage.py runserver
     ```
 
+### Make the poll app modifiable in the admin¶
+- tell the admin that Question objects have an admin interface by importing and registering Question __polls/admin.py__:
+    ```
+    from django.contrib import admin
+    from .models import Question
+
+    admin.site.register(Question)
+    ```
