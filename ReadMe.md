@@ -152,3 +152,5 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 
     admin.site.register(Question)
     ```
+
+## [Page 3](https://docs.djangoproject.com/en/2.2/intro/tutorial03/)
