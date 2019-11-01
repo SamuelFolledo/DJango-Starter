@@ -64,7 +64,7 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 
 
 
-## [Page 2](https://docs.djangoproject.com/en/2.2/intro/tutorial02/) Database Setup -> Creating Models
+## [Page 2](https://docs.djangoproject.com/en/2.2/intro/tutorial02/) Database Setup -> Creating Models -> Django Admin -> Development Server -> Making App Modifiable by Admins
 ### Database Setup
 - __mysite/settings.py__ is a normal Python module with module-level variables representing Django settings, which on default uses SQLite
     - set __TIME_ZONE__ to your time zone
