@@ -69,7 +69,7 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     - __When to use include()__ - You should always use include() when you include other URL patterns. admin.site.urls is the only exception to this.
 - To verify that an index view has been wire into the URLconf, run the following command:
 
-    ``` $ python manage.py runserver ```
+    ```$ python manage.py runserver```
 ### path() <a name="path"></a>
 - The __path()__ function is passed four arguments, two reuired: __route__ and __view__, and two optionals: __kwargs__, and __name__
     __REQUIRED__
