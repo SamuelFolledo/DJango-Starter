@@ -3,8 +3,8 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 
 ## Table Of Contents:
 1. [Page 1](#page1):
-    - [Creating A Project](Creating A Project)
-    - [Creating An App](Creating An App)
+    - [Creating A Project](#Creating A Project)
+    - [Creating An App](#Creating An App)
 
 <a name="page1"></a>
 ## [Page 1](https://docs.djangoproject.com/en/2.2/intro/tutorial01/) Creating A Project -> Creating An App
