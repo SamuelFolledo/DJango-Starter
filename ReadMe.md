@@ -217,7 +217,7 @@ urlpatterns = [
 ]
 ```
 - __NOTE__ When somebody requests a page from your website - like __"/polls/24/"__, Django will load the __mysite/urls.py__ because it's pointed to by the __ROOT_URLCONF__ in mysite/settings.py. Then it finds the variable named __urlpatterns__ which is a list of our paths and traverses the patterns in order until it finds a match at '__polls/__'. Then it strips off the mathcing text __("polls/")__ and sends the remaining text - __"34/"__ to the '__polls/urls.py__' URLConf for further processing. Then it matches '__<<int:question_id>>/__', resulting in a call to the __detail()__ view like so:
-```
-detail(request=<HttpRequest object>, question_id=24)
-```
-The __question_id=24__ part comes from __<<int:question_id>>__. Using angle brackets "captures" part of the URL and sends it as a keyword argument to the view function. The __:question_id>__ part of the string defines the name that will be used to identify the matched pattern, and the __<int:__ part is a converter that determines what patterns should match this part of the URL path.
+    ```
+    detail(request=<HttpRequest object>, question_id=24)
+    ```
+    The __question_id=24__ part comes from __<<int:question_id>>__. Using angle brackets "captures" part of the URL and sends it as a keyword argument to the view function. The __:question_id>__ part of the string defines the name that will be used to identify the matched pattern, and the __<int:__ part is a converter that determines what patterns should match this part of the URL path.
