@@ -1,8 +1,15 @@
 # Welcome to Django's Starter Project
 This is a project from [Django's Documentation Tutorial](https://docs.djangoproject.com/en/2.2/intro/tutorial01/) to get our feet wet in Django framework.
 
+## Table Of Contents:
+1. [Page 1](#page1):
+    - [Creating A Project](Creating A Project)
+    - [Creating An App](Creating An App)
+
+<a name="page1"></a>
 ## [Page 1](https://docs.djangoproject.com/en/2.2/intro/tutorial01/) Creating A Project -> Creating An App
-### Creating A Project
+
+### Creating A Project <a name="Creating A Project"></a>
     ```$ django-admin startproject mysite //where mysite is the name of the project's directory``` 
 - These files are:
 	•	The outer __mysite/__ root directory is just a container for your project. Its name doesn’t matter to Django; you can rename it to anything you like.
@@ -15,7 +22,8 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 
 - To run and test if our Django project works, go to outer __mysite__ directory and run in terminal:
     ```$ python manage.py runserver```
-### Creating An App
+    
+### Creating An App <a name="Creating An App"></a>
 - To __create your app__, type this in the same directory as __manage.py__ and run in terminal:
     ```$ python manage.py startapp polls //polls directory and its files will be created```
 - To __write a review__:
@@ -154,3 +162,12 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     ```
 
 ## [Page 3](https://docs.djangoproject.com/en/2.2/intro/tutorial03/)
+- __view__ is a “type” of Web page in your Django application that generally serves a specific function and has a specific template
+    - in this poll application, we'll have 4 views:
+        1. Question __index__ - displays the latest few questions
+        2. Question __detail__ - displays a question text, with no result but with a form to vote
+        3. Question __results__ - displays results for a particular question
+        4. Vote action - handles voting for a particular choice in a particular question
+- __URL pattern__ is the general form of a URL - /newsarchive/<year>/<month>/
+- __URLconfs__ maps URL patterns to views; meaning it is used in order to get from a URL to a view. Refer to [URL dispatcher](https://docs.djangoproject.com/en/2.2/topics/http/urls/) for more info
+### Writing more views
