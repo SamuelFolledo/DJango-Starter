@@ -3,13 +3,13 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 
 ## Table Of Contents:
 1. [Page 1](#page1):
-    - [Creating A Project](#Creating A Project)
-    - [Creating An App](#Creating An App)
+    - [Creating A Project](#CreatingAProject)
+    - [Creating An App](#CreatingAnApp)
 
 <a name="page1"></a>
 ## [Page 1](https://docs.djangoproject.com/en/2.2/intro/tutorial01/) Creating A Project -> Creating An App
 
-### Creating A Project <a name="Creating A Project"></a>
+### Creating A Project <a name="CreatingAProject"></a>
     ```$ django-admin startproject mysite //where mysite is the name of the project's directory``` 
 - These files are:
 	•	The outer __mysite/__ root directory is just a container for your project. Its name doesn’t matter to Django; you can rename it to anything you like.
