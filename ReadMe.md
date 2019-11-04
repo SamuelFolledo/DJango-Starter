@@ -14,6 +14,7 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     - [Making App Modifiable by Admins](MakingAppModifiableByAdmins)
 3. [Page3](#page3):
     - [Writing Views](#WritingViews)
+    - [Write Views That Actually Do Something](#ViewsThatDoSomething)
 
 ## NOTES FROM THIS TUTORIAL
 <a name="page1"></a>
@@ -221,3 +222,19 @@ urlpatterns = [
     detail(request=<HttpRequest object>, question_id=24)
     ```
     The __question_id=24__ part comes from __<<int:question_id>>__. Using angle brackets "captures" part of the URL and sends it as a keyword argument to the view function. The __:question_id>__ part of the string defines the name that will be used to identify the matched pattern, and the __<int:__ part is a converter that determines what patterns should match this part of the URL path.
+
+### Write views that actually do something <a name="ViewsThatDoSomething"></a>
+- Each view is responsible for doing one of two things:
+    1. returning an __HttpResponse__ object containing the object for the requested page
+    2. raising an __exception__ such as __Http404__
+- new index() for __polls/views.py__
+    ```
+    #polls/views.py¶
+    from django.http import HttpResponse
+    from .models import Question
+
+    def index(request):
+        latest_question_list = Question.objects.order_by('-pub_date')[:5] #grab 5 most recent questions contained in an array
+        output = ', '.join([q.question_text for q in latest_question_list]) #get each Question's text contained in a string and separated by a comma
+        return HttpResponse(output) # Leave the rest of the views (detail, results, vote) unchanged
+    ```
