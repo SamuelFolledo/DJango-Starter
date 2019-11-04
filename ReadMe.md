@@ -15,6 +15,7 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 3. [Page3](#page3):
     - [Writing Views](#WritingViews)
 
+## NOTES FROM THIS TUTORIAL
 <a name="page1"></a>
 ## [Page 1](https://docs.djangoproject.com/en/2.2/intro/tutorial01/) Creating A Project -> Creating An App
 
@@ -183,4 +184,35 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
         4. Vote action - handles voting for a particular choice in a particular question
 - __URL pattern__ is the general form of a URL - /newsarchive/<year>/<month>/
 - __URLconfs__ maps URL patterns to views; meaning it is used in order to get from a URL to a view. Refer to [URL dispatcher](https://docs.djangoproject.com/en/2.2/topics/http/urls/) for more info
+
 ### Writing more views <a name="WritingViews"></a>
+- add a few views in __polls/views.py__ that takes a question_id argument
+```
+#polls/views.py¶
+def detail(request, question_id):
+    return HttpResponse("You're looking at question %s." % question_id)
+
+def results(request, question_id):
+    response = "You're looking at the results of question %s."
+    return HttpResponse(response % question_id)
+
+def vote(request, question_id):
+    return HttpResponse("You're voting on question %s." % question_id)
+```
+- wire these new views into the __polls.urls__ module by addig the following __path()__ calls
+```
+#polls/urls.py¶
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    # ex: /polls/
+    path('', views.index, name='index'),
+    # ex: /polls/5/
+    path('<int:question_id>/', views.detail, name='detail'),
+    # ex: /polls/5/results/
+    path('<int:question_id>/results/', views.results, name='results'),
+    # ex: /polls/5/vote/
+    path('<int:question_id>/vote/', views.vote, name='vote'),
+]
+```
