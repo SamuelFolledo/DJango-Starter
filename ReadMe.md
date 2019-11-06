@@ -1,6 +1,10 @@
 # Welcome to Django's Starter Project
 This is a project from [Django's Documentation Tutorial](https://docs.djangoproject.com/en/2.2/intro/tutorial01/) to get our feet wet in Django framework.
 
+## To Run Locally
+1. go to the __mysite__ directory in the terminal
+2. ```$ python3 manage.py runserver```
+
 ## Table Of Contents:
 1. [Page 1](#page1):
     - [Creating A Project](#CreatingAProject)
@@ -21,14 +25,25 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 ## [Page 1](https://docs.djangoproject.com/en/2.2/intro/tutorial01/) Creating A Project -> Creating An App
 
 ### Creating A Project <a name="CreatingAProject"></a>
-    ```$ django-admin startproject mysite //where mysite is the name of the project's directory``` 
+
+    ```
+    $ django-admin startproject mysite //where mysite is the name of the project's directory
+    ``` 
+
 - These files are:
+
 	•	The outer __mysite/__ root directory is just a container for your project. Its name doesn’t matter to Django; you can rename it to anything you like.
+
 	•	__manage.py__: A command-line utility that lets you interact with this Django project in various ways. You can read all the details about manage.py in django-admin and manage.py.
+
 	•	The inner __mysite/__ directory is the actual Python package for your project. Its name is the Python package name you’ll need to use to import anything inside it (e.g. mysite.urls).
+
 	•	mysite/__init__.py: An empty file that tells Python that this directory should be considered a Python package. If you’re a Python beginner, read more about packages in the official Python docs.
+
 	•	__mysite/settings.py__: Settings/configuration for this Django project. Django settings will tell you all about how settings work.
+
 	•	__mysite/urls.py__: The URL declarations for this Django project; a “table of contents” of your Django-powered site. You can read more about URLs in URL dispatcher.
+
 	•	__mysite/wsgi.py__: An entry-point for WSGI-compatible web servers to serve your project. See How to deploy with WSGI for more details.
 
 - To run and test if our Django project works, go to outer __mysite__ directory and run in terminal:
@@ -242,7 +257,7 @@ urlpatterns = [
 - because of how __app_directories__ template loader works, you can refer to this template within Django simply as __polls/index.html__
 - __Template namespacing__ - putting those templates inside another directory named for the application itself in order to ensure that we are pointing Django at the right directory. That is why the step above this is important becaus as Django will choose the first template it finds who name matches, and if you have a template with the same name in a different application, Django will be unable to distinguish between them.
     ```
-    #polls/templates/polls/index.html¶
+    <!-- polls/templates/polls/index.html¶ -->
     {% if latest_question_list %}
         <ul>
         {% for question in latest_question_list %}
