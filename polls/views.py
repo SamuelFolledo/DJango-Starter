@@ -10,7 +10,7 @@ def index(request):
     }
     return render(request, 'polls/index.html', context) #django.shortcut render
     
-def detail(request, question_id):- 
+def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id) #django.shortcut to get if the question exist or not
     return render(request, 'polls/detail.html', {'question': question})
 
