@@ -19,6 +19,7 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 3. [Page3](#page3):
     - [Writing Views](#WritingViews)
     - [Write Views That Actually Do Something](#ViewsThatDoSomething)
+    - [Raising a 404 Error](#Raising404Error)
 
 ## NOTES FROM THIS TUTORIAL
 <a name="page1"></a>
@@ -51,7 +52,9 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     
 ### Creating An App <a name="CreatingAnApp"></a>
 - To __create your app__, type this in the same directory as __manage.py__ and run in terminal:
-    ```$ python manage.py startapp polls //polls directory and its files will be created```
+    ```
+    $ python manage.py startapp polls //polls directory and its files will be created
+    ```
 - To __write a review__:
     ```
     polls/views.py¶
@@ -245,13 +248,14 @@ urlpatterns = [
 - new index() for __polls/views.py__
     ```
     #polls/views.py¶
+    from django.shortcuts import render
     from django.http import HttpResponse
     from .models import Question
 
     def index(request):
-        latest_question_list = Question.objects.order_by('-pub_date')[:5] #grab 5 most recent questions contained in an array
-        output = ', '.join([q.question_text for q in latest_question_list]) #get each Question's text contained in a string and separated by a comma
-        return HttpResponse(output) # Leave the rest of the views (detail, results, vote) unchanged
+    latest_question_list = Question.objects.order_by('-pub_date')[:5] #grab 5 most recent questions 
+    context = { 'latest_question_list': latest_question_list, }
+    return render(request, 'polls/index.html', context) #shortcut render
     ```
 - create a __templates__ directory inside polls directory as Django will look for templates in there. Inside the templates directory, create a __polls__ directory with a __index.html__ file inside it.
 - because of how __app_directories__ template loader works, you can refer to this template within Django simply as __polls/index.html__
@@ -268,3 +272,6 @@ urlpatterns = [
         <p>No polls are available.</p>
     {% endif %}
     ```
+- __render()__ method that takes: 1. request object, 2. template name, 3. dictionary which is optional. It then returns an __HttpResponse__ object of the given template rendered with the given context.
+
+### Raising a 404 error <a name="Raising404Error"></a>
