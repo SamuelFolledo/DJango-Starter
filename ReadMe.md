@@ -275,3 +275,5 @@ urlpatterns = [
 - __render()__ method that takes: 1. request object, 2. template name, 3. dictionary which is optional. It then returns an __HttpResponse__ object of the given template rendered with the given context.
 
 ### Raising a 404 error <a name="Raising404Error"></a>
+
+
