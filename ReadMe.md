@@ -238,3 +238,18 @@ urlpatterns = [
         output = ', '.join([q.question_text for q in latest_question_list]) #get each Question's text contained in a string and separated by a comma
         return HttpResponse(output) # Leave the rest of the views (detail, results, vote) unchanged
     ```
+- create a __templates__ directory inside polls directory as Django will look for templates in there. Inside the templates directory, create a __polls__ directory with a __index.html__ file inside it.
+- because of how __app_directories__ template loader works, you can refer to this template within Django simply as __polls/index.html__
+- __Template namespacing__ - putting those templates inside another directory named for the application itself in order to ensure that we are pointing Django at the right directory. That is why the step above this is important becaus as Django will choose the first template it finds who name matches, and if you have a template with the same name in a different application, Django will be unable to distinguish between them.
+    ```
+    #polls/templates/polls/index.html¶
+    {% if latest_question_list %}
+        <ul>
+        {% for question in latest_question_list %}
+            <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+    ```
