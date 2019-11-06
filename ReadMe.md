@@ -275,5 +275,11 @@ urlpatterns = [
 - __render()__ method that takes: 1. request object, 2. template name, 3. dictionary which is optional. It then returns an __HttpResponse__ object of the given template rendered with the given context.
 
 ### Raising a 404 error <a name="Raising404Error"></a>
+- __get_object_or_404()__ - is a django.shortcut method that raises Http404 if the object doesn't exist
+    - takes a __Django model__ as its first argument and an arbitrary number of keyword arguments, which it passes to the get() function of the model's manager
+    - Why use a get_object_or_404() instead of automatically catching the ObjectDoesNotExist?
+        - Because that would couple the model layer to the view layer. One of the foremost design goals of Django is to maintain __loose coupling__, which means that _individual components of Django's feature stack are kept as separate as possible_. This is preferred but optional because various layers of the framework shouldn’t “know” about each other unless absolutely necessary.
+        
+
 
 
