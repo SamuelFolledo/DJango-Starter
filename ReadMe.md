@@ -284,9 +284,35 @@ urlpatterns = [
 
 ### Use the Template System <a name="useTemplateSystem"></a>
 
+```
+<!-- polls/templates/polls/detail.html¶ -->
+<h1>{{ question.question_text }}</h1>
+<ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }}</li>
+    {% endfor %}
+</ul>
+```
 - Django's template system uses __dot-lookup syntax__ to access variable attributes. 
     - In ```{{ question.question_text }}``` first Django does a dictionary lookup on the object question. Failing that, it tries an _attribute lookup_ – which works, in this case. If attribute lookup had failed, it would’ve tried a _list-index lookup_.
     - __Method-calling__ happens in the ```{% for %}``` loop: ```question.choice_set.all``` which returns an iterable of Choice objects
 - [Template Guide](https://docs.djangoproject.com/en/2.2/topics/templates/)
 
 ### Removing hardcoded URLs in templates <a name="removingHardcodedURLsInTemplates"></a>
+```
+<li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
+```
+- not tightly-coupled approach and hardcoded approach
+
+### Namespacing URL names
+ - __polls__ app has a __detail__ view, and so might an app on the same project that is for a blog. How does one make it so that Django knows which app view to create for a url when using the ```{% url %}``` template tag?
+    - The answer is to add namespaces to your URLconf. In the __polls/urls.py__
+        ```
+        #polls/urls.py¶
+        app_name = 'polls'
+        ```
+    - now you can update __polls/index.html__
+        ```
+        polls/templates/polls/index.html¶
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+        ```
