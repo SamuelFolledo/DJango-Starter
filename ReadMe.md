@@ -20,6 +20,8 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     - [Writing Views](#WritingViews)
     - [Write Views That Actually Do Something](#ViewsThatDoSomething)
     - [Raising a 404 Error](#Raising404Error)
+    - [Use the Template System](#useTemplateSystem)
+    - [Removing hardcoded URLs in templates](#removingHardcodedURLsInTemplates)
 
 ## NOTES FROM THIS TUTORIAL
 <a name="page1"></a>
@@ -194,7 +196,7 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 
 <a name="page3"></a>
 
-## [Page 3](https://docs.djangoproject.com/en/2.2/intro/tutorial03/)
+## [Page 3](https://docs.djangoproject.com/en/2.2/intro/tutorial03/) Writing more views -> Raising a 404 error -> Use the Template System -> Removing hardcoded URLs in templates
 - __view__ is a “type” of Web page in your Django application that generally serves a specific function and has a specific template
     - in this poll application, we'll have 4 views:
         1. Question __index__ - displays the latest few questions
@@ -279,7 +281,12 @@ urlpatterns = [
     - takes a __Django model__ as its first argument and an arbitrary number of keyword arguments, which it passes to the get() function of the model's manager
     - Why use a get_object_or_404() instead of automatically catching the ObjectDoesNotExist?
         - Because that would couple the model layer to the view layer. One of the foremost design goals of Django is to maintain __loose coupling__, which means that _individual components of Django's feature stack are kept as separate as possible_. This is preferred but optional because various layers of the framework shouldn’t “know” about each other unless absolutely necessary.
-        
 
+### Use the Template System <a name="useTemplateSystem"></a>
 
+- Django's template system uses __dot-lookup syntax__ to access variable attributes. 
+    - In ```{{ question.question_text }}``` first Django does a dictionary lookup on the object question. Failing that, it tries an _attribute lookup_ – which works, in this case. If attribute lookup had failed, it would’ve tried a _list-index lookup_.
+    - __Method-calling__ happens in the ```{% for %}``` loop: ```question.choice_set.all``` which returns an iterable of Choice objects
+- [Template Guide](https://docs.djangoproject.com/en/2.2/topics/templates/)
 
+### Removing hardcoded URLs in templates <a name="removingHardcodedURLsInTemplates"></a>
