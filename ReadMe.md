@@ -6,29 +6,36 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 2. ```$ python3 manage.py runserver```
 
 ## Table Of Contents:
-1. [Page 1](#page1):
+1. [Part 1: Request and Responses](#part1)
     - [Creating A Project](#CreatingAProject)
     - [Creating An App](#CreatingAnApp)
     - [path](#path)
-2. [Page2](#page2):
+2. [Part 2: Models](#part2)
     - [Database Setup](#DatabaseSetup)
     - [Creating Models](#CreatingModels)
     - [Django Admin](#DjangoAdmin)
     - [Development Server](#DevelopmentServer)
     - [Making App Modifiable by Admins](MakingAppModifiableByAdmins)
-3. [Page3](#page3):
+3. [Part 3: Views and Templates](#part3)
     - [Writing Views](#WritingViews)
     - [Write Views That Actually Do Something](#ViewsThatDoSomething)
     - [Raising a 404 Error](#Raising404Error)
     - [Use the Template System](#useTemplateSystem)
     - [Removing hardcoded URLs in templates](#removingHardcodedURLsInTemplates)
+4. [Part 4: Forms and Generic Views](#part4)
+
+5. [Part 5: Testing](#part5)
+
+6. [Part 6: Static Files](#part6)
+
+7. [Part 7: Admin Site](#part7)
+
+
+
 
 ## NOTES FROM THIS TUTORIAL
-<a name="page1"></a>
-## [Page 1](https://docs.djangoproject.com/en/2.2/intro/tutorial01/) Creating A Project -> Creating An App
-
+## [Part 1: Request and Responses](https://docs.djangoproject.com/en/2.2/intro/tutorial01/) Creating A Project -> Creating An App <a name="part1"></a>
 ### Creating A Project <a name="CreatingAProject"></a>
-
     ```
     $ django-admin startproject mysite //where mysite is the name of the project's directory
     ``` 
@@ -102,9 +109,11 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     - __name__ - _naming your URL lets you refer to it unambiguously from elsewhere_ in Django, especially from within templates. This powerful feature allows you to make global changes to the URL patterns of your project while only touching a single file.
 
 
-<a name="page2"></a>
 
-## [Page 2](https://docs.djangoproject.com/en/2.2/intro/tutorial02/) Database Setup -> Creating Models -> Django Admin -> Development Server -> Making App Modifiable by Admins
+
+
+
+## [Part 2: Models](https://docs.djangoproject.com/en/2.2/intro/tutorial02/) Database Setup -> Creating Models -> Django Admin -> Development Server -> Making App Modifiable by Admins <a name="part2"></a>
 ### Database Setup <a name="DatabaseSetup"></a>
 - __mysite/settings.py__ is a normal Python module with module-level variables representing Django settings, which on default uses SQLite
     - set __TIME_ZONE__ to your time zone
@@ -194,9 +203,10 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     ```
 
 
-<a name="page3"></a>
 
-## [Page 3](https://docs.djangoproject.com/en/2.2/intro/tutorial03/) Writing more views -> Raising a 404 error -> Use the Template System -> Removing hardcoded URLs in templates
+
+
+## [Part 3: Views and Templates](https://docs.djangoproject.com/en/2.2/intro/tutorial03/) Writing more views -> Raising a 404 error -> Use the Template System -> Removing hardcoded URLs in templates <a name="part3"></a>
 - __view__ is a “type” of Web page in your Django application that generally serves a specific function and has a specific template
     - in this poll application, we'll have 4 views:
         1. Question __index__ - displays the latest few questions
@@ -316,3 +326,30 @@ urlpatterns = [
         polls/templates/polls/index.html¶
         <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
         ```
+
+
+
+
+
+
+## [Part 4: Forms and Generic Views](https://docs.djangoproject.com/en/2.2/intro/tutorial04/) <a name="part4"></a>
+
+
+
+
+
+
+
+
+## [Part 5: Testing](https://docs.djangoproject.com/en/2.2/intro/tutorial05/) <a name="part5"></a>
+
+
+
+
+
+## [Part 6: Static Files](https://docs.djangoproject.com/en/2.2/intro/tutorial06/) <a name="part6"></a>
+
+
+
+
+## [Part 7: Admin Site](https://docs.djangoproject.com/en/2.2/intro/tutorial07/) <a name="part7"></a>
