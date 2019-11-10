@@ -34,7 +34,7 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 
 
 ## NOTES FROM THIS TUTORIAL
-## [Part 1: Request and Responses](https://docs.djangoproject.com/en/2.2/intro/tutorial01/) Creating A Project -> Creating An App <a name="part1"></a>
+## [Part 1: Request and Responses](https://docs.djangoproject.com/en/2.2/intro/tutorial01/) <a name="part1"></a> Creating A Project -> Creating An App 
 ### Creating A Project <a name="CreatingAProject"></a>
     ```
     $ django-admin startproject mysite //where mysite is the name of the project's directory
@@ -113,7 +113,7 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 
 
 
-## [Part 2: Models](https://docs.djangoproject.com/en/2.2/intro/tutorial02/) Database Setup -> Creating Models -> Django Admin -> Development Server -> Making App Modifiable by Admins <a name="part2"></a>
+## [Part 2: Models](https://docs.djangoproject.com/en/2.2/intro/tutorial02/) <a name="part2"></a> Database Setup -> Creating Models -> Django Admin -> Development Server -> Making App Modifiable by Admins
 ### Database Setup <a name="DatabaseSetup"></a>
 - __mysite/settings.py__ is a normal Python module with module-level variables representing Django settings, which on default uses SQLite
     - set __TIME_ZONE__ to your time zone
@@ -206,7 +206,7 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
 
 
 
-## [Part 3: Views and Templates](https://docs.djangoproject.com/en/2.2/intro/tutorial03/) Writing more views -> Raising a 404 error -> Use the Template System -> Removing hardcoded URLs in templates <a name="part3"></a>
+## [Part 3: Views and Templates](https://docs.djangoproject.com/en/2.2/intro/tutorial03/) <a name="part3"></a> Writing more views -> Raising a 404 error -> Use the Template System -> Removing hardcoded URLs in templates
 - __view__ is a “type” of Web page in your Django application that generally serves a specific function and has a specific template
     - in this poll application, we'll have 4 views:
         1. Question __index__ - displays the latest few questions
