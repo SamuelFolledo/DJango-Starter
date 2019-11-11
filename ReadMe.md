@@ -22,7 +22,9 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     - [Raising a 404 Error](#Raising404Error)
     - [Use the Template System](#useTemplateSystem)
     - [Removing hardcoded URLs in templates](#removingHardcodedURLsInTemplates)
+    - [Namespacing URL names](namespacingURLNames)
 4. [Part 4: Forms and Generic Views](#part4)
+    - [Writing a Form](writingAForm)
 
 5. [Part 5: Testing](#part5)
 
@@ -314,7 +316,7 @@ urlpatterns = [
 ```
 - not tightly-coupled approach and hardcoded approach
 
-### Namespacing URL names
+### Namespacing URL names <a name="namespacingURLNames"></a>
  - __polls__ app has a __detail__ view, and so might an app on the same project that is for a blog. How does one make it so that Django knows which app view to create for a url when using the ```{% url %}``` template tag?
     - The answer is to add namespaces to your URLconf. In the __polls/urls.py__
         ```
@@ -332,13 +334,72 @@ urlpatterns = [
 
 
 
-## [Part 4: Forms and Generic Views](https://docs.djangoproject.com/en/2.2/intro/tutorial04/) <a name="part4"></a>
+## [Part 4: Forms and Generic Views](https://docs.djangoproject.com/en/2.2/intro/tutorial04/) <a name="part4"></a> -> Writing a Simple Form
+### Writing a Simple Form <a name="writingAForm"></a> 
+```
+<!-- polls/templates/polls/detail.html¶ -->
+<h1>{{ question.question_text }}</h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form action="{% url 'polls:vote' question.id %}" method="post">
+    {% csrf_token %}
+    {% for choice in question.choice_set.all %}
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+    {% endfor %}
+    <input type="submit" value="Vote">
+</form>
+```
+    - The above template displays a radio button for each question choice. The __value__ of each radio button is the associated question choice’s ID. The name of each radio button is __"choice"__. That means, when somebody selects one of the radio buttons and submits the form, it’ll send the POST data __choice=#__ where # is the ID of the selected choice. This is the basic concept of HTML forms.
+    - We set the form’s __action__ to __{% url 'polls:vote' question.id %}__, and we set __method="post"__. Using method="post" (as opposed to __method="get"__) is very important, because the act of submitting this form will alter data server-side. __Whenever you create a form that alters data server-side, use method="post"__. This tip isn’t specific to Django; it’s just good Web development practice.
+    - __forloop.counter__ indicates how many times the __for__ tag has gone through its loop
+    - Since we’re creating a POST form (which can have the effect of modifying data), we need to worry about Cross Site Request Forgeries. Thankfully, you don’t have to worry too hard, because Django comes with a very easy-to-use system for protecting against it. In short, __all POST forms that are targeted at internal URLs should use the {% csrf_token %}__ template tag.
+
+```
+#polls/views.py¶
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
+from .models import Choice, Question
+# ...
+
+def results(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, 'polls/results.html', {'question': question})
+
+def vote(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    try:
+        selected_choice = question.choice_set.get(pk=request.POST['choice'])
+    except (KeyError, Choice.DoesNotExist):
+        # Redisplay the question voting form.
+        return render(request, 'polls/detail.html', {
+            'question': question,
+            'error_message': "You didn't select a choice.",
+        })
+    else:
+        selected_choice.votes += 1
+        selected_choice.save()
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+```
+    - __request.POST__ is a dictionary-like object that lets you access submitted data by key name. In this case, __request.POST['choice']__ returns the ID of the selected choice, as a string. request.POST values are always strings.
+
+    Note that Django also provides request.GET for accessing GET data in the same way – but we’re explicitly using request.POST in our code, __to ensure that data is only altered via a POST__ call.
+
+    - __request.POST['choice']__ will raise __KeyError__ if __choice__ wasn’t provided in POST data. The above code checks for __KeyError__ and redisplays the question form with an error message if __choice__ isn’t given.
+
+    - After incrementing the choice count, the code returns an HttpResponseRedirect rather than a normal HttpResponse. __HttpResponseRedirect takes a single argument: the URL to which the user will be redirected__
+
+    As the Python comment above points out, you should always return an __HttpResponseRedirect__ after successfully dealing with POST data. This tip isn’t specific to Django; it’s just good Web development practice.
+
+    - We are using the __reverse()__ function in the __HttpResponseRedirect__ constructor in this example. This function helps avoid having to hardcode a URL in the view function. It is given the __name of the view that we want to pass control__ to and the __variable portion of the URL pattern that points to that view__. In this case, using the URLconf we set up in Tutorial 3, this reverse() call will return a string like
+    '/polls/3/results/'
+    where the 3 is the value of question.id. This redirected URL will then call the 'results' view to display the final page.
 
 
-
-
-
-
+## Use generic views: Less code is better¶
 
 
 ## [Part 5: Testing](https://docs.djangoproject.com/en/2.2/intro/tutorial05/) <a name="part5"></a>
@@ -348,6 +409,7 @@ urlpatterns = [
 
 
 ## [Part 6: Static Files](https://docs.djangoproject.com/en/2.2/intro/tutorial06/) <a name="part6"></a>
+
 
 
 
