@@ -409,9 +409,11 @@ def vote(request, question_id):
 </ul>
 <a href="{% url 'polls:detail' question.id %}">Vote again?</a> <!-- url of app_name:function_name passed_data.id -->
 ```
-
+- NOTE: vote() view does have a small problem. If two users of your website try to vote at exactly the same time, this might go wrong: The same value, let’s say 42, will be retrieved for votes. Then, for both users the new value of 43 is computed and saved, but 44 would be the expected value. This is called a __race condition__. If you are interested, you can read [Avoiding race conditions using F()](https://docs.djangoproject.com/en/2.2/ref/models/expressions/#avoiding-race-conditions-using-f) to learn how you can solve this issue.
 
 ### Use generic views: Less code is better¶ <a name="useGenericViews"></a>
+- 
+
 
 
 ## [Part 5: Testing](https://docs.djangoproject.com/en/2.2/intro/tutorial05/) <a name="part5"></a>
