@@ -22,9 +22,10 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     - [Raising a 404 Error](#Raising404Error)
     - [Use the Template System](#useTemplateSystem)
     - [Removing hardcoded URLs in templates](#removingHardcodedURLsInTemplates)
-    - [Namespacing URL names](namespacingURLNames)
+    - [Namespacing URL names](#namespacingURLNames)
 4. [Part 4: Forms and Generic Views](#part4)
-    - [Writing a Form](writingAForm)
+    - [Writing a Form](#writingAForm)
+    - [Use Generic Views](#useGenericViews)
 
 5. [Part 5: Testing](#part5)
 
@@ -334,7 +335,7 @@ urlpatterns = [
 
 
 
-## [Part 4: Forms and Generic Views](https://docs.djangoproject.com/en/2.2/intro/tutorial04/) <a name="part4"></a> -> Writing a Simple Form
+## [Part 4: Forms and Generic Views](https://docs.djangoproject.com/en/2.2/intro/tutorial04/) <a name="part4"></a> -> Writing a Simple Form -> Use Generic Views
 ### Writing a Simple Form <a name="writingAForm"></a> 
 ```
 <!-- polls/templates/polls/detail.html¶ -->
@@ -410,7 +411,7 @@ def vote(request, question_id):
 ```
 
 
-## Use generic views: Less code is better¶
+### Use generic views: Less code is better¶ <a name="useGenericViews"></a>
 
 
 ## [Part 5: Testing](https://docs.djangoproject.com/en/2.2/intro/tutorial05/) <a name="part5"></a>
