@@ -398,6 +398,17 @@ def vote(request, question_id):
     '/polls/3/results/'
     where the 3 is the value of question.id. This redirected URL will then call the 'results' view to display the final page.
 
+```
+<!-- polls/templates/polls/results.html¶ -->
+<h1>{{ question.question_text }}</h1>
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+<a href="{% url 'polls:detail' question.id %}">Vote again?</a> <!-- url of app_name:function_name passed_data.id -->
+```
+
 
 ## Use generic views: Less code is better¶
 
