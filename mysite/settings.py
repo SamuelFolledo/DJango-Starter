@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework', #must add in order to add an API, refer to Day 11 in BEW1.2 for more info
     'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
