@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect #Part4 - HttpResponseRedirect takes a single argument: the URL to which the user will be redirected
 from django.urls import reverse
 from django.views import generic
+from django.utils import timezone
 
 from .models import Question, Choice
 
@@ -11,7 +12,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return Question.objects.order_by('-pub_date')[:5]
+        return Question.objects.filter( pub_date__lte=timezone.now() ).order_by('-pub_date')[:5]
 
 
 class DetailView(generic.DetailView):
@@ -23,21 +24,6 @@ class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
     
-
-# def index(request):
-#     latest_question_list = Question.objects.order_by('-pub_date')[:5] #grab 5 most recent questions 
-#     context = {
-#         'latest_question_list': latest_question_list,
-#     }
-#     return render(request, 'polls/index.html', context) #django.shortcut render
-    
-# def detail(request, question_id): #part 3
-#     question = get_object_or_404(Question, pk=question_id) #django.shortcut to get if the question exist or not
-#     return render(request, 'polls/detail.html', {'question': question})
-
-# def results(request, question_id): #part 4
-#     question = get_object_or_404(Question, pk=question_id)
-#     return render(request, 'polls/results.html', {'question': question})
 
 def vote(request, question_id): #part 4
     question = get_object_or_404(Question, pk=question_id)
