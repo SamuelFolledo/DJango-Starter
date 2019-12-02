@@ -425,7 +425,39 @@ def vote(request, question_id):
 
 
 ## [Part 5: Testing](https://docs.djangoproject.com/en/2.2/intro/tutorial05/) <a name="part5"></a>
+- confirm the bug by using __shell__ to check the method on a question whose lies in the future:
+    ```
+    $ python3 manage.py shell
+    ```
+    ```
+    >>> import datetime
+    >>> from django.utils import timezone
+    >>> from polls.models import Question
+    >>> # create a Question instance with pub_date 30 days in the future
+    >>> future_question = Question(pub_date=timezone.now() + datetime.timedelta(days=30))
+    >>> # was it published recently?
+    >>> future_question.was_published_recently()
+    True
+    ```
+    - this clearly should not return True if it is not recent
+- Create a test that will expose that bug
+    ```
+    polls/tests.py¶
+    import datetime
+    from django.test import TestCase
+    from django.utils import timezone
+    from .models import Question
 
+    class QuestionModelTests(TestCase):
+        def test_was_published_recently_with_future_question(self): #was_published_recently() returns False for questions whose pub_date is in the future
+            time = timezone.now() + datetime.timedelta(days=30)
+            future_question = Question(pub_date=time)
+            self.assertIs(future_question.was_published_recently(), False)
+    ```
+- Running tests
+    ```
+    $ python3 manage.py test polls
+    ```
 
 
 
