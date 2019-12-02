@@ -597,9 +597,16 @@ class QuestionDetailViewTests(TestCase):
 
 
 ## [Part 6: Static Files](https://docs.djangoproject.com/en/2.2/intro/tutorial06/) <a name="part6"></a>
-
-
-
-
+- Correct way of adding css
+    1. in polls app, create a __static__ folder
+    2. in static folder, create a __polls__ folder
+    3. in polls/static/polls/ create a style.css file
+- create some styles and reference it in html file like so
+    ```
+    <!-- polls/templates/polls/index.html -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+    ```
+- Correct way of adding images is ``` polls/static/polls/images/background.gif ```
 
 ## [Part 7: Admin Site](https://docs.djangoproject.com/en/2.2/intro/tutorial07/) <a name="part7"></a>
