@@ -25,7 +25,7 @@ SECRET_KEY = 'l62ec91v$u&!5gcg1l+m&9gja=m0)c^fxtxe&!&9nn@1dur4lf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'polls_v2.herokuapp.com'] #name will be the string in terminal we put after $ heroku create projectName
+ALLOWED_HOSTS = ['localhost', 'polls-v2.herokuapp.com'] #name will be the string in terminal we put after $ heroku create projectName
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') #for deployment
 
 
