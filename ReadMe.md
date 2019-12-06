@@ -1,6 +1,9 @@
 # Welcome to Django's Starter Project
 This is a project from [Django's Documentation Tutorial](https://docs.djangoproject.com/en/2.2/intro/tutorial01/) to get our feet wet in Django framework.
 
+## Live At
+[https://sf-makewiki-v2.herokuapp.com/](https://sf-makewiki-v2.herokuapp.com/)
+
 ## To Run Locally
 1. go to the __mysite__ directory in the terminal
 2. ```$ python3 manage.py runserver```
