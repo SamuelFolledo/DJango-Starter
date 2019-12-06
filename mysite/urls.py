@@ -18,6 +18,6 @@ from django.urls import include, path #The include() function allows referencing
 
 urlpatterns = [
     path('api/', include('api.urls')),#api
-    path('polls/', include('polls.urls')),
+    path('', include('polls.urls')),
     path('admin/', admin.site.urls),
 ]
