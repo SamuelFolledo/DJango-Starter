@@ -40,7 +40,8 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     - [Correct Way of Adding Background](#addingBackground)
     
 7. [Part 7: Admin Site](#part7)
-
+    - [Admin Reference Link](#adminLink)
+    - [Admin Page Screenshots](adminScreenshot)
 
 
 
@@ -622,3 +623,9 @@ class QuestionDetailViewTests(TestCase):
     ```
 
 ## [Part 7: Admin Site](https://docs.djangoproject.com/en/2.2/intro/tutorial07/) <a name="part7"></a>
+### [Admin Reference Link](https://docs.djangoproject.com/en/2.2/intro/tutorial07/) <a name="adminLink"></a>
+
+## Admin Page Screenshots <a name="adminScreenshot"></a>
+### Admin Page - Question List
+
+### Admin Page - Question Detail
