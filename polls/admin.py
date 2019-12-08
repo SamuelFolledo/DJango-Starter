@@ -13,6 +13,8 @@ class QuestionAdmin(admin.ModelAdmin):
     ]
     inlines = [ChoiceInline] #puts it in the same field
     list_display = ('question_text', 'pub_date', 'was_published_recently') #displays these properties on showing lists of polls
+    list_filter = ['pub_date'] #filter!!!!
+    search_fields = ['question_text'] #search question text
 
 admin.site.register(Question, QuestionAdmin)
 
