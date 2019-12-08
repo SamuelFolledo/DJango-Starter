@@ -12,6 +12,7 @@ class QuestionAdmin(admin.ModelAdmin):
         ('Date information', {'fields': ['pub_date'], 'classes': ['collapse']}),
     ]
     inlines = [ChoiceInline] #puts it in the same field
+    list_display = ('question_text', 'pub_date', 'was_published_recently') #displays these properties on showing lists of polls
 
 admin.site.register(Question, QuestionAdmin)
 
