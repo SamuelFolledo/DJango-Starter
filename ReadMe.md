@@ -627,5 +627,7 @@ class QuestionDetailViewTests(TestCase):
 
 ## Admin Page Screenshots <a name="adminScreenshot"></a>
 ### Admin Page - Question List
+<img src="https://github.com/SamuelFolledo/DJango-Starter/blob/master/screenshots/questionsList.png" width="800" height="497">
 
 ### Admin Page - Question Detail
+<img src="https://github.com/SamuelFolledo/DJango-Starter/blob/master/screenshots/questionDetail.png" width="800" height="650">
