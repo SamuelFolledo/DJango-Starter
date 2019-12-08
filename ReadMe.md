@@ -627,7 +627,9 @@ class QuestionDetailViewTests(TestCase):
 
 ## Admin Page Screenshots <a name="adminScreenshot"></a>
 ### Admin Page - Question List
+- It has a search question text functionality, filter, and sort date published and published recently
 <img src="https://github.com/SamuelFolledo/DJango-Starter/blob/master/screenshots/questionsList.png" width="800" height="497">
 
 ### Admin Page - Question Detail
+- Shows Choices which are editable in a TabularInLine format
 <img src="https://github.com/SamuelFolledo/DJango-Starter/blob/master/screenshots/questionDetail.png" width="800" height="650">
