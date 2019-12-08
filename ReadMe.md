@@ -41,8 +41,8 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     
 7. [Part 7: Admin Site](#part7)
     - [Admin Reference Link](#adminLink)
-    - [Admin Page - Question List Screenshot](questionListScreenshot)
-    - [Admin Page - Question Detail Screenshot](questionDetailScreenshot)
+    - [Admin Page - Question List Screenshot](#questionListScreenshot)
+    - [Admin Page - Question Detail Screenshot](#questionDetailScreenshot)
 
 
 
