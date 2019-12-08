@@ -31,10 +31,16 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     - [Use Generic Views](#useGenericViews)
 
 5. [Part 5: Testing](#part5)
+    - [Create a Sample Test](#testSample)
+    - [Testing a View](#testingAView)
+    - [DetailView Tests](#testingADetailView)
 
 6. [Part 6: Static Files](#part6)
-
+    - [Correct Way of Adding CSS](#addingCSS)
+    - [Correct Way of Adding Background](#addingBackground)
+    
 7. [Part 7: Admin Site](#part7)
+
 
 
 
@@ -443,7 +449,7 @@ def vote(request, question_id):
     True
     ```
     - this clearly should not return True if it is not recent
-### Create a test that will expose was_published_recently() bug
+### Create a test that will expose was_published_recently() bug <a name="testSample"></a>
     ```
     polls/tests.py¶
     import datetime
@@ -488,7 +494,7 @@ def vote(request, question_id):
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
     ```
 
-### Testing a View
+### Testing a View <a name="testingAView"></a>
 - right now our views displays unpublished Questions
     ```
     #polls/views.py
@@ -565,7 +571,7 @@ class QuestionIndexViewTests(TestCase):
             ['<Question: Past question 2.>', '<Question: Past question 1.>']
         )
 ```
-### DetailView Tests
+### DetailView Tests <a name="testingADetailView"></a>
 ```
 #polls/views
 class DetailView(generic.DetailView):
@@ -600,7 +606,7 @@ class QuestionDetailViewTests(TestCase):
 
 
 ## [Part 6: Static Files](https://docs.djangoproject.com/en/2.2/intro/tutorial06/) <a name="part6"></a>
-- Correct way of adding css
+- Correct way of adding css <a name="addingCSS"></a>
     1. in polls app, create a __static__ folder
     2. in static folder, create a __polls__ folder
     3. in polls/static/polls/ create a style.css file
@@ -610,6 +616,9 @@ class QuestionDetailViewTests(TestCase):
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
     ```
-- Correct way of adding images is ``` polls/static/polls/images/background.gif ```
+- Correct way of adding background <a name="addingBackground"></a>
+    ```
+    polls/static/polls/images/background.gif
+    ```
 
 ## [Part 7: Admin Site](https://docs.djangoproject.com/en/2.2/intro/tutorial07/) <a name="part7"></a>
