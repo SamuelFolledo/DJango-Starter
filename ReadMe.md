@@ -41,7 +41,8 @@ This is a project from [Django's Documentation Tutorial](https://docs.djangoproj
     
 7. [Part 7: Admin Site](#part7)
     - [Admin Reference Link](#adminLink)
-    - [Admin Page Screenshots](adminScreenshot)
+    - [Admin Page - Question List Screenshot](questionListScreenshot)
+    - [Admin Page - Question Detail Screenshot](questionDetailScreenshot)
 
 
 
@@ -622,14 +623,18 @@ class QuestionDetailViewTests(TestCase):
     polls/static/polls/images/background.gif
     ```
 
-## [Part 7: Admin Site](https://docs.djangoproject.com/en/2.2/intro/tutorial07/) <a name="part7"></a>
-### [Admin Reference Link](https://docs.djangoproject.com/en/2.2/intro/tutorial07/) <a name="adminLink"></a>
+<a name="part7"></a>
+## [Part 7: Admin Site](https://docs.djangoproject.com/en/2.2/intro/tutorial07/) 
+<a name="adminLink"></a>
+### [Admin Reference Link](https://docs.djangoproject.com/en/2.2/intro/tutorial07/) 
 
-## Admin Page Screenshots <a name="adminScreenshot"></a>
+<a name="questionListScreenshot"></a>
+## Admin Page Screenshots 
 ### Admin Page - Question List
 - It has a search question text functionality, filter, and sort date published and published recently
 <img src="https://github.com/SamuelFolledo/DJango-Starter/blob/master/screenshots/questionsList.png" width="800" height="497">
 
-### Admin Page - Question Detail
+<a name="questionDetailScreenshot"></a>
+### Admin Page - Question Detail 
 - Shows Choices which are editable in a TabularInLine format
 <img src="https://github.com/SamuelFolledo/DJango-Starter/blob/master/screenshots/questionDetail.png" width="800" height="650">
